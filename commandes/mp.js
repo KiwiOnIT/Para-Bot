@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const Client = new Discord.Client;
 const { color1 } = require('./../config.json');
 module.exports = {
-    name: "dm",
+    name: "mp",
     category: "commandes",
     description: "Retourne le handler",
     run: async (Client, message, args) => {
@@ -15,5 +15,12 @@ module.exports = {
             .setColor(color1)
             .setTitle(":white_check_mark: DM envoyé avec succès")
         message.reply(embed11)
+
+        if (mentions == undefined) {
+            var embed14 = new Discord.MessageEmbed()
+                .setColor(color1)
+                .setTitle(":x: Membre à dm non mentionné.")
+            message.reply(embed14)
     }
-}
+    
+}}
