@@ -14,13 +14,7 @@ module.exports = {
         var embed11 = new Discord.MessageEmbed()
             .setColor(color1)
             .setTitle(":white_check_mark: DM envoyé avec succès")
-        message.reply(embed11)
-
-        if (mentions == undefined) {
-            var embed14 = new Discord.MessageEmbed()
-                .setColor(color1)
-                .setTitle(":x: Membre à dm non mentionné.")
-            message.reply(embed14)
+        message.reply(embed11)  
     }
     
-}}
+}
