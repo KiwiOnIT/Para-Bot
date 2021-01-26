@@ -12,7 +12,7 @@ module.exports = {
             .setColor(color1)
             .setTitle("Commande secret")
             .setDescription("toi aussi t bo")
-            .setThumbail(message.author.displayAvatarURL())
+            .setThumbnail(message.author.displayAvatarURL())
             .setFooter(message.author.username)
             .setTimestamp()
         message.reply(embed15)
