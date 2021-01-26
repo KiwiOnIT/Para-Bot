@@ -16,7 +16,7 @@ module.exports = {
             .addField("\u200B", "\u200B", true)
             .addField("Commande fun:partying_face:", "`?ping` \n\n `?stats @utilisateur` \n\n `?avatar @utilisateur`", true)
             .addField("\u200B", "\u200B", true)
-            .addField("Commande autre:person_standing:", "`?mp @utilisateur <message>`", true)
+            .addField("Commande autre:person_standing:", "`?dm @utilisateur <message>`", true)
             .addField("Commande secret:shushing_face:", "`Chuut...`", false)
             .setFooter(message.author.username)
             .setTimestamp()
