@@ -11,7 +11,7 @@ module.exports = {
         var embed15 = new Discord.MessageEmbed()
             .setColor(color1)
             .setTitle("Commande secret")
-            .addField("toi aussi", "t bo", false)
+            .setTitle("toi aussi t bo")
             .setFooter(message.author.username)
             .setTimestamp()
         message.reply(embed15)
