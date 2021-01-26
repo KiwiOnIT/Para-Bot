@@ -25,7 +25,7 @@ fs.readdir("./commandes/", (error, f) => {
 });
 
 Client.on("message", async message => {
-    const prefix = "p?";
+    const prefix = "?";
 
     if (message.author.bot) return;
     if (!message.guild) return;
