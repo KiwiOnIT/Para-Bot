@@ -32,11 +32,22 @@ module.exports = {
                 var embed10 = new Discord.MessageEmbed()
                     .setColor(color1)
                     .setTitle("Clear réussi ✅")
-                    .setDescription(`${number} message(s) ont été supprimé(s)`)
+                    .setDescription(`${number} messages ont été supprimés`)
                     .setFooter(message.author.username)
                     .setTimestamp()
                 message.channel.bulkDelete(number).then(messages => {
-                    message.reply(embed10)
+                    if( number == 1){
+                        var embed14 = new Discord.MessageEmbed()
+                        .setColor(color1)
+                        .setTitle("Clear réussi ✅")
+                        .setDescription(`${number} message a été supprimé`)
+                        .setFooter(message.author.username)
+                        .setTimestamp()
+                        message.reply(embed14)
+                    }
+                    else{
+                        message.reply(embed10)
+                    }
                     console.log("Supression de " + messages.size + " message réussi")
                 }).catch(err => {
                     console.log("Erreur de clear :" + err);
