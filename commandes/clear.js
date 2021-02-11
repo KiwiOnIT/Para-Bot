@@ -11,7 +11,7 @@ module.exports = {
 
         var embed13 = new Discord.MessageEmbed()
                 .setColor(color1)
-                .setTitle(":x:Nombre(s) de message(s) à supprimer non défini.")
+                .setTitle("<a:red_cross:802974815073206322> Nombre(s) de message(s) à supprimer non défini.")
 
         if (message.member.hasPermission("MANAGE_MESSAGES")){
 
@@ -31,7 +31,7 @@ module.exports = {
             else {
                 var embed10 = new Discord.MessageEmbed()
                     .setColor(color1)
-                    .setTitle("Clear réussi ✅")
+                    .setTitle("Clear réussi <a:check:803019851614388225>")
                     .setDescription(`${number} messages ont été supprimés`)
                     .setFooter(message.author.username)
                     .setTimestamp()
@@ -39,7 +39,7 @@ module.exports = {
                     if( number == 1){
                         var embed14 = new Discord.MessageEmbed()
                         .setColor(color1)
-                        .setTitle("Clear réussi ✅")
+                        .setTitle("Clear réussi <a:check:803019851614388225>")
                         .setDescription(`${number} message a été supprimé`)
                         .setFooter(message.author.username)
                         .setTimestamp()
