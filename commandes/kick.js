@@ -14,7 +14,7 @@ module.exports = {
             if (mention == undefined) {
                 var embed3 = new Discord.MessageEmbed()
                     .setColor(color1)
-                    .setTitle(":x: Membre pas mentionné.")
+                    .setTitle("<a:red_cross:802974815073206322> Membre pas mentionné.")
                 message.reply(embed3)
             }
             else {
@@ -31,7 +31,7 @@ module.exports = {
                 else {
                     var embed4 = new Discord.MessageEmbed()
                         .setColor(color1)
-                        .setTitle(":x: Imposible de kick cet utilisateur.")
+                        .setTitle("<a:red_cross:802974815073206322> Imposible de kick cet utilisateur.")
                     message.reply(embed4)
                 }
             }
