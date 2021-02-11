@@ -14,14 +14,14 @@ module.exports = {
             if (mention == undefined) {
                 var embed3 = new Discord.MessageEmbed()
                     .setColor(color1)
-                    .setTitle(":x: Membre pas mentionné.")
+                    .setTitle("<a:red_cross:802974815073206322> Membre pas mentionné.")
                 message.reply(embed3);
             }
             else {
                 mention.roles.add("802815689853108237")
                 var embed8 = new Discord.MessageEmbed()
                     .setColor(color1)
-                    .setTitle(":white_check_mark: Mute avec succès.")
+                    .setTitle("<a:check:803019851614388225> Mute avec succès.")
                 message.reply(embed8)
             }
         }
