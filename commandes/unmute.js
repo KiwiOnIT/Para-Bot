@@ -14,7 +14,7 @@ module.exports = {
             if (mention == undefined) {
                 var embed3 = new Discord.MessageEmbed()
                     .setColor(color1)
-                    .setTitle(":x: Membre pas mentionné.")
+                    .setTitle("<a:red_cross:802974815073206322> Membre pas mentionné.")
                 message.reply(embed3);
             }
 
@@ -22,7 +22,7 @@ module.exports = {
                 mention.roles.remove("802815689853108237")
                 var embed9 = new Discord.MessageEmbed()
                     .setColor(color1)
-                    .setTitle(":white_check_mark: Unmute avec succès.")
+                    .setTitle("<a:check:803019851614388225> Unmute avec succès.")
                 message.reply(embed9)
             }
         }
