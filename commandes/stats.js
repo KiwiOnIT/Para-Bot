@@ -18,8 +18,8 @@ module.exports = {
       .setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
       .addField(":100:  Pseudonyme ❯", user.username)
       .addField(":credit_card: ID ❯", user.id)
-      .addField(":earth_americas: Création de compte ❯", moment.utc(user.createdAt).format("LL"))
-      .addField(" :computer: A rejoint le serveur le ❯", moment.utc(user.joinedAt).format("LL"))
+      .addField(":earth_americas: Création de compte ❯", moment.utc(user.createdAt).format("LLLL"))
+      .addField(" :computer: A rejoint le serveur le ❯", moment.utc(user.joinedAt).format("LLLL"))
       .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
       .setTimestamp()
     message.channel.send(embed);
