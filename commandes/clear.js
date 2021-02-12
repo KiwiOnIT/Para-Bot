@@ -44,9 +44,15 @@ module.exports = {
                         .setFooter(message.author.username)
                         .setTimestamp()
                         message.reply(embed14)
+                        .then(message => {
+                            message.delete({ timeout: 3000 })
+                          })
                     }
                     else{
                         message.reply(embed10)
+                        .then(message => {
+                            message.delete({ timeout: 3000 })
+                          })
                     }
                     console.log("Supression de " + messages.size + " message réussi")
                 }).catch(err => {
