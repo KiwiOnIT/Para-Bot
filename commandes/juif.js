@@ -16,7 +16,7 @@ module.exports = {
         let embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setTitle(`Juif - ${JuifUser.username}`)
-        .setDescription(`${JuifUser} est juif à ${juif}%  :fire:`)
+        .setDescription(`${JuifUser} est juif à ${juif}%  <a:FIRE:809769472537133097>`)
         .setThumbnail(JuifUser.displayAvatarURL())
     
         message.channel.send(embed)
