@@ -27,6 +27,10 @@ fs.readdir("./commandes/", (error, f) => {
 Client.on("message", async message => {
     const prefix = "#";
 
+
+    var embedpref = new Discord.MessageEmbed()
+    .setColor(color1)
+    .setDescription("**Prefix oublier ? Le prefix est `?`.**")
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     if(message.mentions.users.first() === Client.user) {
         if(!args[1]) {
@@ -54,7 +58,3 @@ Client.on("message", async message => {
 
 
 Client.login(token);
-
-var embedpref = new Discord.MessageEmbed()
-.setColor(color1)
-.setDescription("**Prefix oublier ? Le prefix est `?`.**")
