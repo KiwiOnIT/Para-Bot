@@ -34,12 +34,12 @@ Client.on("guildMemberAdd", member =>  {
 });
 
 Client.on("guildMemberRemove", member =>  {
-    var embedA = new Discord.MessageEmbed()
+    var embedD = new Discord.MessageEmbed()
     .setTitle(member.displayName + " a quitté le serveur.")
     .setDescription("**Nous somme désormais **" + member.guild.memberCount + " **sur le serveur.**")
     .setColor(color1)
     .setThumbnail(member.user.displayAvatarURL())
-    member.guild.channels.cache.find(channel => channel.id === "669199146732748830").send(embedA)   
+    member.guild.channels.cache.find(channel => channel.id === "669199146732748830").send(embedD)   
 });
 
 Client.on("message", async message => {
