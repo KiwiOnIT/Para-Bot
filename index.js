@@ -25,7 +25,14 @@ fs.readdir("./commandes/", (error, f) => {
 });
 
 Client.on("message", async message => {
-    const prefix = "?";
+    const prefix = "#";
+
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    if(message.mentions.users.first() === Client.user) {
+        if(!args[1]) {
+            message.channel.send(embedpref);
+        }
+    }
 
     if (message.author.bot) return;
     if (!message.guild) return;
@@ -33,7 +40,6 @@ Client.on("message", async message => {
 
     if (!message.member) message.member = await message.guild.fetchMember(message);
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
     if (cmd.length === 0) return;
@@ -42,6 +48,13 @@ Client.on("message", async message => {
 
     if (command)
         command.run(Client, message, args);
+
+        
 });
 
-Client.login(process.env.TOKEN);
+
+Client.login(token);
+
+var embedpref = new Discord.MessageEmbed()
+.setColor(color1)
+.setDescription("**Prefix oublier ? Le prefix est `?`.**")
