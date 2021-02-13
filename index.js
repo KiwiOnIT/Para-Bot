@@ -25,7 +25,7 @@ fs.readdir("./commandes/", (error, f) => {
 });
 
 Client.on("message", async message => {
-    const prefix = "#";
+    const prefix = "?";
 
 
     var embedpref = new Discord.MessageEmbed()
@@ -57,4 +57,4 @@ Client.on("message", async message => {
 });
 
 
-Client.login(token);
+Client.login(process.env.TOKEN);
