@@ -23,7 +23,7 @@ fs.readdir("./commandes/", (error, f) => {
         Client.commands.set(commande.name, commande);
     });
 });
-
+          
 Client.on("guildMemberAdd", member =>  {
     var embedA = new Discord.MessageEmbed()
     .setTitle(member.displayName + " a rejoint le serveur ! Bienvenu à toi !")
@@ -43,7 +43,7 @@ Client.on("guildMemberRemove", member =>  {
 });
 
 Client.on("message", async message => {
-    const prefix = "?";
+    const prefix = "#";
 
 
     var embedpref = new Discord.MessageEmbed()
@@ -73,6 +73,7 @@ Client.on("message", async message => {
 
         
 });
+
 
 
 Client.login(process.env.TOKEN);
