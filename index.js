@@ -58,27 +58,6 @@ Client.on("message", async message => {
         
 });
 
-Client.on("guildMemberAdd", member =>  {
-    var embedA = new Discord.MessageEmbed()
-    .setTitle(member.displayName + " a rejoint le serveur ! Bienvenu à toi !")
-    .setDescription("**Nous somme désormais ** **" + member.guild.memberCount + "** **sur le serveur.**")
-    .setColor(color1)
-    .setThumbnail(member.user.displayAvatarURL())
-    const channel = member.guild.channels.cache.find(channel => channel.id === "669199146732748830")
-    channel.send(embedA)
- 
-});
-
-Client.on("guildMemberRemove", member =>  {
-    var embedD = new Discord.MessageEmbed()
-    .setTitle(member.displayName + " a quitté le serveur.")
-    .setDescription("**Nous somme désormais ** **" + member.guild.memberCount + "** **sur le serveur.**")
-    .setColor(color1)
-    .setThumbnail(member.user.displayAvatarURL())
-    const channel = member.guild.channels.cache.find(channel => channel.id === "669199146732748830")
-    channel.send(embedD)   
-});
-
 
 
 Client.login(process.env.TOKEN);
