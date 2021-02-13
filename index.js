@@ -68,9 +68,9 @@ Client.on("guildMemberAdd", member =>  {
     channel.send(embedA)
         member.roles.add("669196700984016906").then(mbr =>{
 
-    }).catch(() => ({
+    }).catch(() => {
 
-    }));
+    });
  
 });
 
