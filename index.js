@@ -12,23 +12,6 @@ Client.on("ready", () => (
     console.log("bot opérationnel")
 ));
 
-Client.on("guildMemberAdd", member =>  {
-    var embedA = new Discord.MessageEmbed()
-    .setTitle(member.displayName + " a rejoint le serveur ! Bienvenu à toi !")
-    .setDescription("**Nous somme désormais ** **" + member.guild.memberCount + "** **sur le serveur.**")
-    .setColor(color1)
-    .setThumbnail(member.user.displayAvatarURL())
-    member.guild.channels.cache.find(channel => channel.id === "669199146732748830").send(embedA)   
-});
-
-Client.on("guildMemberRemove", member =>  {
-    var embedD = new Discord.MessageEmbed()
-    .setTitle(member.displayName + " a quitté le serveur.")
-    .setDescription("**Nous somme désormais **" + member.guild.memberCount + " **sur le serveur.**")
-    .setColor(color1)
-    .setThumbnail(member.user.displayAvatarURL())
-    member.guild.channels.cache.find(channel => channel.id === "669199146732748830").send(embedD)   
-});
 
 fs.readdir("./commandes/", (error, f) => {
     if (error) console.log(error);
