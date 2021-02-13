@@ -66,6 +66,11 @@ Client.on("guildMemberAdd", member =>  {
     .setThumbnail(member.user.displayAvatarURL())
     const channel = member.guild.channels.cache.find(channel => channel.id === "669199146732748830")
     channel.send(embedA)  
+    member.roles.add("669196700984016906").then(mbr =>{
+
+    }).catch(() => ({
+
+    });
 });
 
 Client.on("guildMemberRemove", member =>  {
