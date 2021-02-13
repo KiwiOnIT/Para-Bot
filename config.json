@@ -1,5 +1,5 @@
 {
-    "token" : "?",
+    "token" : "process.env.token",
     "prefix" : "?",
     "color1" : "#EE03F9"
 }
