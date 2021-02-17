@@ -17,7 +17,7 @@ module.exports = {
         .setColor(color1)
         .setTitle(`Gay - ${gayUser.username}`)
         .setDescription(`${gayUser} est gay à ${gay}%  <a:suck:808801709840400394>`)
-        .setThumbnail(JuifUser.displayAvatarURL())
+        .setThumbnail(gayUser.displayAvatarURL())
     
         message.channel.send(embed)
     }};
