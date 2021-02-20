@@ -13,7 +13,7 @@ module.exports = {
                 .setTitle("📊 __**Sondage**__")
                 .addField(thingToEcho, "Répondre avec <a:check:803019851614388225> ou <a:red_cross:802974815073206322>")
                 .setColor(color1)
-                .setFooter(message.author.username)
+                .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
                 .setTimestamp()
             message.channel.send(embed)
                 .then(function (message) {
