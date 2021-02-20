@@ -14,7 +14,7 @@ module.exports = {
             .setThumbnail("https://cdn.discordapp.com/avatars/791364666990264411/db9046775198265328ffd6267b17c37f.png?size=128")
             .addField("Commandes moderations:crossed_swords:", "`?kick @user` \n\n `?ban @user` \n\n `?mute @user` \n\n `?unmute @user` \n\n `?clear **nombre de message à supprimer**` \n\n `?poll **sujet du sondage**` ", true)
             .addField("\u200B", "\u200B", true)
-            .addField("Commande autre:person_standing:", "`?stats @user` \n\n `?infobot` \n\n `?ping` \n\n `?dm @user` \n\n `?juif @user` \n\n `?gay @user`", true)
+            .addField("Commande public :person_standing:", "`?stats @user` \n\n `?infobot` \n\n `?ping` \n\n `?dm @user` \n\n `?juif @user` \n\n `?gay @user`", true)
             .addField("Commande secret:shushing_face:", "`Chuut...`", true)
             .setFooter(message.author.username)
             .setTimestamp()
