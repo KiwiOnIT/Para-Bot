@@ -18,7 +18,7 @@ module.exports = {
             .addField("\u200B", "\u200B", true)
             .addField("Commande autre:person_standing:", "`?stats @user` \n\n `?infobot` \n\n `?ping` \n\n `?dm @user` \n\n `?juif @user` \n\n `?gay @user`", true)
             .addField("Commande secret:shushing_face:", "`Chuut...`", false)
-            .setFooter(message.author.username)
+            .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
             .setTimestamp()
         message.channel.send(embed)
     }
