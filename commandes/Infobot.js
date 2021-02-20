@@ -42,9 +42,10 @@ module.exports = {
             .addField("<a:FIRE:809769472537133097> Utilisation CPU ❯", `\`${percent.toFixed(2)}%\``, true)
             .addField("<:Gear:809768651061329961> Architecture ❯", `\`${os.arch()}\``, true)
             .addField("<:PC:809766809124208690> OS ❯", `\`\`${osPlatform[os.platform()]}\`\``, true)
-            .setFooter(`${Client.user.username}`, Client.user.displayAvatarURL)
+            .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
             .setTimestamp()
- 
+            
+            
         message.channel.send(embedStats)
     })
  
