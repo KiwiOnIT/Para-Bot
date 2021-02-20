@@ -18,6 +18,8 @@ module.exports = {
         .setTitle(`Juif - ${JuifUser.username}`)
         .setDescription(`${JuifUser} est juif à ${juif}%  <a:FIRE:809769472537133097>`)
         .setThumbnail(JuifUser.displayAvatarURL())
+        .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
+        .setTimestamp()
     
         message.channel.send(embed)
     }};
