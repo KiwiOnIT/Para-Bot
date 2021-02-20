@@ -15,7 +15,7 @@ module.exports = {
             .setDescription("Banane :crown:")
             .setThumbnail("https://cdn.discordapp.com/avatars/364725904850681856/ffed90b2dc7f698aa220b6bb6a6fe188.png?size=2048")
             .addField(":banana:", "C'est vraiment le roi Banane !")
-            .setFooter(message.author.username)
+            .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
             .setTimestamp()
         message.reply(embed14)
     }
