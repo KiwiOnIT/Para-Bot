@@ -53,6 +53,12 @@ fs.readdir("./commandes/", (error, f) => {
 Client.on("message", async message => {
     const prefix = "?";
 
+        if(message.content == ("t bo")) {
+        var embedbo = new Discord.MessageEmbed()
+        .setTitle("t bo")
+        .setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
+        message.reply(embedbo)
+    }
 
     var embedpref = new Discord.MessageEmbed()
     .setColor(color1)
