@@ -33,7 +33,7 @@ module.exports = {
                     .setColor(color1)
                     .setTitle("Clear réussi <a:check:803019851614388225>")
                     .setDescription(`${number} messages ont été supprimés`)
-                    .setFooter(message.author.username)
+                    .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
                     .setTimestamp()
                 message.channel.bulkDelete(number).then(messages => {
                     if( number == 1){
@@ -41,7 +41,7 @@ module.exports = {
                         .setColor(color1)
                         .setTitle("Clear réussi <a:check:803019851614388225>")
                         .setDescription(`${number} message a été supprimé`)
-                        .setFooter(message.author.username)
+                        .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
                         .setTimestamp()
                         message.reply(embed14)
                         .then(message => {
