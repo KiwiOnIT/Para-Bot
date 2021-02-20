@@ -15,7 +15,7 @@ module.exports = {
             .setDescription("use code kroma-lysnake")
             .setThumbnail("https://cdn.discordapp.com/avatars/337210490453229579/a_ca3b5de5f4cebfae880ef0f90d1d6e12.gif")
             .addField("Lysnake", "C'est vraiment le meilleur dev")
-            .setFooter(message.author.username)
+            .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
             .setTimestamp()
         message.reply(embed12)
     }
