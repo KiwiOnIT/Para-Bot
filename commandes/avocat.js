@@ -15,7 +15,7 @@ module.exports = {
             .setDescription("use code avocat")
             .setThumbnail("https://cdn.discordapp.com/avatars/596504838951403521/a_ebf7204ccce37909b2914f823ee37e49.gif")
             .addField(":avocado:", "C'est vraiment le boss Avocat !")
-            .setFooter(message.author.username)
+            .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
             .setTimestamp()
         message.reply(embed2)
     }
