@@ -13,7 +13,7 @@ module.exports = {
         embed.setTitle("Ton Avatar:")
         embed.setImage(message.author.displayAvatarURL())
         embed.setColor(color1)
-        .setFooter(message.author.username)
+        .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
         .setTimestamp()
         return message.channel.send(embed)
     }else{
@@ -21,7 +21,7 @@ module.exports = {
         embed.setTitle(`Avatar de ${user.tag}:`)
         embed.setImage(user.displayAvatarURL())
         embed.setColor(color1)
-        .setFooter(message.author.username)
+        .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
         .setTimestamp()
         return message.channel.send(embed)
     }
