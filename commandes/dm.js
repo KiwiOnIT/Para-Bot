@@ -14,6 +14,8 @@ module.exports = {
         var embed11 = new Discord.MessageEmbed()
             .setColor(color1)
             .setTitle(":white_check_mark: DM envoyé avec succès")
+            .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
+            .setTimestamp()
         message.reply(embed11)  
     }
     
