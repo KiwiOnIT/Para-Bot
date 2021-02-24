@@ -18,8 +18,6 @@ module.exports = {
         .setTitle(`Gay - ${gayUser.username}`)
         .setDescription(`${gayUser} est gay à ${gay}%  <a:suck:808801709840400394>`)
         .setThumbnail(gayUser.displayAvatarURL())
-        .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
-        .setTimestamp()
     
         message.channel.send(embed)
     }};
