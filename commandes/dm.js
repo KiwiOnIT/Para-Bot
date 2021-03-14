@@ -8,7 +8,6 @@ module.exports = {
     run: async (Client, message, args) => {
         if (message.author.bot) return;
         if (message.channel.type == "dm") return;
-        message.delete()
         message.mentions.users.first().send(args.slice(1).join(' '));
 
         var embed11 = new Discord.MessageEmbed()
