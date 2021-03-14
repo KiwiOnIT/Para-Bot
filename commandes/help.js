@@ -6,7 +6,6 @@ module.exports = {
     category: "commandes",
     description: "Retourne le handler",
     run: async (Client, message, args) => {
-        message.delete();
         var embed = new Discord.MessageEmbed()
             .setColor(color1)
             .setTitle("Help")
