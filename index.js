@@ -53,12 +53,14 @@ fs.readdir("./commandes/", (error, f) => {
 Client.on("message", async message => {
     const prefix = "?";
 
-    let inviteLink = ["discord.gg/", "discord.com/invite/", "discordapp.com/invite/"];
-
-    if(inviteLink.some(word => message.content.toLowerCase().includes(word))) {
+  if(inviteLink.some(word => message.content.toLowerCase().includes(word))) {
         await message.delete();
-        return message.reply("**Tu ne peux pas envoyer des liens de serveurs discord !**")
-        .then(m => m.delete(3000))
+        var embedlink = new Discord.MessageEmbed()
+        .setTitle("**Tu ne peux pas envoyer des liens de serveurs discord !**")
+        return message.reply(embedlink)
+        .then(message => {
+            message.delete({ timeout: 3000 })
+          })
     }
 
     var embedpref = new Discord.MessageEmbed()
