@@ -53,6 +53,14 @@ fs.readdir("./commandes/", (error, f) => {
 Client.on("message", async message => {
     const prefix = "?";
 
+    let inviteLink = ["discord.gg/", "discord.com/invite/", "discordapp.com/invite/"];
+
+    if(inviteLink.some(word => message.content.toLowerCase().includes(word))) {
+        await message.delete();
+        return message.reply("**Tu ne peux pas envoyer des liens de serveurs discord !**")
+        .then(m => m.delete(3000))
+    }
+
     var embedpref = new Discord.MessageEmbed()
     .setColor(color1)
     .setDescription("**Prefix oublier ? Le prefix est `?`.**")
@@ -78,7 +86,7 @@ Client.on("message", async message => {
     if (command)
         command.run(Client, message, args);
 
-        
+       
 });
 
 Client.login(process.env.TOKEN);
