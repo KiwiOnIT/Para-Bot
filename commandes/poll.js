@@ -6,6 +6,7 @@ module.exports = {
     category: "commande",
     description: "Returns latency and API ping",
     run: async (Client, message, args) => {
+        message.delete();
         if (message.member.hasPermission("ADMINISTRATOR")) {
             let args = message.content.split(" ").slice(1);
             let thingToEcho = args.join(" ")
