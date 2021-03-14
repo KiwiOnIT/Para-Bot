@@ -6,7 +6,6 @@ module.exports = {
     category: "commandes",
     description: "Retourne le handler",
     run: async (Client, message, args) => {
-        message.delete();
     const embed = new Discord.MessageEmbed()
 
     if(!message.mentions.users.first()){
