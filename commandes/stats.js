@@ -9,7 +9,7 @@ module.exports = {
   description: "envoie les informations de l'utilisateur",
 
   run: async (client, message, args) => {
-    message.delete();
+
 
     moment.locale("fr");
     let user = message.mentions.users.first() || message.author;
