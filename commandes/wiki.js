@@ -22,12 +22,14 @@ module.exports = {
                 redirects: '',
                 formatversion: 2
             });
-        if (query.length === 0) return message.channel.send(embedno);
-        var embedno = new Discord.MessageEmbed()
+            var embedno = new Discord.MessageEmbed()
         .setTitle("<a:red_cross:802974815073206322> Vous devez mentionner une information à rechercher")
-        if (body.query.pages[0].missing) return message.channel.send(embedno2);
+        .setColor(color1)
+        if (query.length === 0) return message.channel.send(embedno);
         var embedno2 = new Discord.MessageEmbed()
         .setTitle("<a:red_cross:802974815073206322> Pas de résultats, réessayer avec plus d'informations.")
+        .setColor(color1)
+        if (body.query.pages[0].missing) return message.channel.send(embedno2);
         const embed = new Discord.MessageEmbed()
             .setColor(color1)
             .setTitle(body.query.pages[0].title)
