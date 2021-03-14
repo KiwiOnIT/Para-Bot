@@ -6,7 +6,6 @@ module.exports = {
     category: "commandes",
     description: "Retourne le handler",
     run: async (Client, message, args) => {
-        message.delete();
         let début = Date.now();
 
         let before = new Discord.MessageEmbed()
