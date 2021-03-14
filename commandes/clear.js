@@ -8,6 +8,7 @@ module.exports = {
     run: async (Client, message, args) => {
         if (message.author.bot) return;
         if (message.channel.type == "dm") return;
+        message.delete();
 
         var embed13 = new Discord.MessageEmbed()
                 .setColor(color1)
