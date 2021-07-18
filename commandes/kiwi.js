@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 const Client = new Discord.Client;
-const { color1 } = require('./../config.json');
+const { color1 } = require('../config.json');
 module.exports = {
-    name: "banane",
+    name: "kiwi",
     category: "commandes",
     description: "Retourne le handler",
     run: async (Client, message, args) => {
@@ -11,11 +11,12 @@ module.exports = {
         var embed14 = new Discord.MessageEmbed()
             .setColor(color1)
             .setTitle("Commande secret")
-            .setDescription("Banane :crown:")
-            .setThumbnail("https://cdn.discordapp.com/avatars/364725904850681856/ffed90b2dc7f698aa220b6bb6a6fe188.png?size=2048")
-            .addField(":banana:", "C'est vraiment le roi Banane !")
+            .setDescription("kiwi :crown:")
+            .setThumbnail("https://cdn.discordapp.com/avatars/364725904850681856/a_37634127f7ae766bc96c6e32413c891f.webp")
+            .addField(":kiwi:", "C'est vraiment le roi kiwi !")
             .setFooter(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024}))
             .setTimestamp()
         message.reply(embed14)
     }
 }
+
