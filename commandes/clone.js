@@ -6,7 +6,9 @@ module.exports = {
     category: "commandes",
     description: "Retourne le handler",
     run: async (Client, message, args) => {
+
+        if (message.member.hasPermission("MANAGE_CHANNELS")) {
         message.channel.clone()
         message.channel.delete()
-    }}
+    }}}
         
