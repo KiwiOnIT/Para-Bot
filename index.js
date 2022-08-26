@@ -1,96 +1,65 @@
-const Discord = require("discord.js");
-const Client = new Discord.Client;
-const { prefix, color1 } = require('./config.json');
+const { Client, GatewayIntentBits, Partials, Collection, EmbedBuilder } = require('discord.js');
+const { token, color } = require('./config.json');
 const fs = require('fs');
-const ms = require("ms");
-const moment = require("moment")
 
-Client.commands = new Discord.Collection();
-
-
-Client.on("ready", () => (
-    console.log("bot opérationnel")
-));
-
-Client.on("guildMemberAdd", member =>{
-    var embedA = new Discord.MessageEmbed()
-    .setTitle(member.displayName + " a rejoint le serveur ! Bienvenu à toi !")
-    .setDescription("**Nous sommes désormais ** **" + member.guild.memberCount + "** **sur le serveur.**")
-    .setColor(color1)
-    .setThumbnail(member.user.displayAvatarURL())
-    member.guild.channels.cache.find(channel => channel.id === "669199146732748830").send(embedA)
-    member.roles.add("669196700984016906").then(mbr =>{
-
-    }).catch(() => ({
-
-    }));
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildBans,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.GuildInvites,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.MessageContent
+    ],
+    partials: [Partials.Channel, Partials.Message, Partials.User, Partials.GuildMember, Partials.Reaction]
 });
 
-Client.on("guildMemberRemove", member =>{
-    var embedD = new Discord.MessageEmbed()
-    .setTitle(member.displayName + " a quitté le serveur.")
-    .setDescription("**Nous sommes désormais ** **" + member.guild.memberCount + "** **sur le serveur.**")
-    .setColor(color1)
-    .setThumbnail(member.user.displayAvatarURL())
-    member.guild.channels.cache.find(channel => channel.id === "669199146732748830").send(embedD)
+client.slashCommands = new Collection();
 
-})
-
-
-fs.readdir("./commandes/", (error, f) => {
-    if (error) console.log(error);
-    let commandes = f.filter(f => f.split(".").pop() === "js");
-    if (commandes.length <= 0) return console.log("Aucune commande trouvée !");
-    commandes.forEach((f) => {
-        let commande = require(`./commandes/${f}`);
-        console.log(`${f} Commande chargée !`)
-
-        Client.commands.set(commande.name, commande);
+fs.readdir("./slashcommands", (err, files) => {
+    files = files.filter(f => f.endsWith('.js'));
+    files.forEach(file => {
+        const command = require(`./slashcommands/${file}`);
+        console.log(`Loading slashcommand ${file}`);
+        client.slashCommands.set(command.name, command);
     });
 });
-          
 
-Client.on("message", async message => {
-    const prefix = "?";
-
-    let inviteLink = ["discord.gg/", "discord.com/invite/", "discordapp.com/invite/"];
-
-    if(inviteLink.some(word => message.content.toLowerCase().includes(word))) {
-        await message.delete();
-        var embedlink = new Discord.MessageEmbed()
-        .setTitle("**Tu ne peux pas envoyer des liens de serveurs discord !**")
-        return message.reply(embedlink)
-        .then(message => {
-            message.delete({ timeout: 3000 })
-          })
-    }
-
-    var embedpref = new Discord.MessageEmbed()
-    .setColor(color1)
-    .setDescription("**Prefix oublier ? Le prefix est `?`.**")
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    if(message.mentions.users.first() === Client.user) {
-        if(!args[1]) {
-            message.channel.send(embedpref);
-        }
-    }
-
-    if (message.author.bot) return;
-    if (!message.guild) return;
-    if (!message.content.startsWith(prefix)) return;
-
-    if (!message.member) message.member = await message.guild.fetchMember(message);
-
-    const cmd = args.shift().toLowerCase();
-
-    if (cmd.length === 0) return;
-
-    let command = Client.commands.get(cmd);
-
-    if (command)
-        command.run(Client, message, args);
-
-       
+fs.readdir('./handler/', (err, files) => {
+    files = files.filter(f => f.endsWith('.js'));
+    files.forEach(f => {
+        const event = require(`./handler/${f}`);
+        console.log(`Loading event ${f}`);
+        client.on(f.split('.')[0], event.bind(null, client));
+        delete require.cache[require.resolve(`./handler/${f}`)];
+    });
 });
 
-Client.login(process.env.TOKEN);
+client.once('ready', () => {
+    console.log('Bot opérationnel');
+});
+
+client.login(token);
+
+client.on("guildMemberAdd", async member => {
+    var embedA = new EmbedBuilder()
+        .setTitle(member.displayName + " a rejoint le serveur ! Bienvenu à toi !")
+        .setDescription("**Nous sommes désormais ** **" + member.guild.memberCount + "** **sur le serveur.**")
+        .setColor(color)
+        .setThumbnail(member.user.displayAvatarURL())
+    member.guild.channels.cache.get("1012425082200670248").send({ embeds: [embedA] })
+    member.roles.add("1012802482386259980")
+});
+
+client.on("guildMemberRemove", async member => {
+    var embedD = new EmbedBuilder()
+        .setTitle(member.displayName + " a quitté le serveur.")
+        .setDescription("**Nous sommes désormais ** **" + member.guild.memberCount + "** **sur le serveur.**")
+        .setColor(color)
+        .setThumbnail(member.user.displayAvatarURL())
+    const channel = member.guild.channels.cache.get("1012425082200670248")
+    channel.send({ embeds: [embedD] })
+});  
