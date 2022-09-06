@@ -3,7 +3,7 @@ const { color } = require('./../config.json');
 module.exports = {
     name: "kick",
     description: "Expulsion d'un membre",
-    permissions: [PermissionsBitField.Flags.kickMember],
+    permissions: [PermissionsBitField.Flags.KickMembers],
     options: [
         {
             name: "membre",
