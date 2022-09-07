@@ -48,7 +48,7 @@ module.exports = {
 
         await mute.timeout(milliseconds, reason)
 
-        let mute_embed = new Discord.EmbedBuilder()
+        let mute_embed = new EmbedBuilder()
             .setColor(color)
             .setThumbnail(mute.displayAvatarURL())
             .setTitle('Rapport de mute :')
