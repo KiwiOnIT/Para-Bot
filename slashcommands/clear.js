@@ -1,5 +1,5 @@
 const { EmbedBuilder, PermissionsBitField } = require('discord.js');
-const { color } = require('./../config.json');
+const { color, logs } = require('./../config.json');
 module.exports = {
     name: "clear",
     description: "clear un nombre precis de message",
@@ -30,6 +30,7 @@ module.exports = {
                     .setDescription(`${number} message a été supprimé`)
                     .setFooter({ text: interaction.member.user.tag, iconURL: interaction.member.user.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }) })
                     .setTimestamp()
+                    client.channels.cache.get(logs).send({embeds: [embed14]})
                 interaction.channel.send({ embeds: [embed14] }).then(msg =>
                     setTimeout(() => {
                         msg.delete()
@@ -37,6 +38,7 @@ module.exports = {
                 )
             }
             else {
+                client.channels.cache.get(logs).send({embeds: [embed10]})
                 interaction.channel.send({ embeds: [embed10] }).then(msg =>
                     setTimeout(() => {
                         msg.delete()

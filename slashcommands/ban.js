@@ -1,5 +1,5 @@
 const { EmbedBuilder, PermissionsBitField } = require('discord.js');
-const { color } = require('./../config.json');
+const { color, logs } = require('./../config.json');
 module.exports = {
     name: "ban",
     description: "Banissement d'un membre",
@@ -28,8 +28,10 @@ module.exports = {
                 .setColor(color)
                 .setTitle('Rapport de ban :')
                 .setThumbnail(banMember.displayAvatarURL())
+                .setTimestamp()
                 .setDescription(`**Ban :** ${banMember.user.tag}\n\n**Modérateur :** ${interaction.user.tag}\n\n**Raison :**${reason}`);
             banMember.ban({reason : reason });
+            client.channels.cache.get(logs).send({embeds: [embed7]})
             return interaction.followUp({embeds: [embed7]})
         }
         else {

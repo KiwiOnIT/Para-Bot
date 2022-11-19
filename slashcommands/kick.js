@@ -1,5 +1,5 @@
 const { EmbedBuilder, PermissionsBitField } = require('discord.js');
-const { color } = require('./../config.json');
+const { color, logs } = require('./../config.json');
 module.exports = {
     name: "kick",
     description: "Expulsion d'un membre",
@@ -22,10 +22,12 @@ module.exports = {
         if (kickMember.kickable) {
             var embed7 = new EmbedBuilder()
                 .setColor(color)
+                .setTimestamp()
                 .setTitle('Rapport de kick :')
                 .setThumbnail(kickMember.displayAvatarURL())
                 .setDescription(`**Kick :** ${kickMember.user.tag}\n\n**Modérateur :** ${interaction.user.tag}`);
             kickMember.kick();
+            client.channels.cache.get(logs).send({embeds: [embed7]})
             return interaction.followUp({embeds: [embed7]})
         }
         else {

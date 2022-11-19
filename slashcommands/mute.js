@@ -1,5 +1,5 @@
 const { EmbedBuilder, PermissionsBitField } = require('discord.js');
-const { color } = require('./../config.json');
+const { color, logs } = require('./../config.json');
 const ms = require("ms");
 
 module.exports = {
@@ -48,12 +48,12 @@ module.exports = {
 
         await mute.timeout(milliseconds, reason)
 
-        let mute_embed = new Discord.EmbedBuilder()
+        let mute_embed = new EmbedBuilder()
             .setColor(color)
             .setThumbnail(mute.displayAvatarURL())
             .setTitle('Rapport de mute :')
             .setDescription(`**Utilisateur mute :** ${mute.user.tag}\n**Modérateur :** ${interaction.user.tag}\n**Temps : ${duration}** \n**Raison :** ` + reason);
-            
+            client.channels.cache.get(logs).send({embeds: [mute_embed]})
         interaction.followUp({ embeds: [mute_embed] })
     }
 }

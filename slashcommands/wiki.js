@@ -1,5 +1,4 @@
 const { color } = require('./../config.json');
-const superagent = require('superagent');
 const snekfetch = require('snekfetch');
 const { EmbedBuilder } = require('discord.js');
 module.exports = {

@@ -1,4 +1,5 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
+const { color, logs } = require('./../config.json');
 
 module.exports = async(client, interaction) => {
 
@@ -32,5 +33,67 @@ module.exports = async(client, interaction) => {
         await interaction.deferReply({ ephemeral: false });
         const command = client.slashCommands.get(interaction.commandName);
         if (command) command.run(client, interaction);
+    }
+
+
+    if(interaction.isButton()) {
+
+        if(interaction.customId === "ticket") {
+
+            let channel = await interaction.guild.channels.create({
+                name: `🎫・ticket-${interaction.user.username}`,
+                type: Discord.ChannelType.GuildText,
+                permissionOverwrites: [
+                    {
+                        id: interaction.guild.roles.everyone.id,
+                        deny: [Discord.PermissionFlagsBits.ViewChannel]
+                    },
+                    {
+                        id: interaction.user.id,
+                        allow: [Discord.PermissionFlagsBits.ViewChannel, Discord.PermissionFlagsBits.SendMessages, Discord.PermissionFlagsBits.ReadMessageHistory, Discord.PermissionFlagsBits.AttachFiles, Discord.PermissionFlagsBits.EmbedLinks]
+                    }
+                ]
+            })
+            await channel.setParent(interaction.channel.parent.id)
+            await channel.setTopic(interaction.user.id)
+
+            const Create = new Discord.EmbedBuilder()
+                .setColor(color)
+                .setThumbnail(client.user.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
+                .setTitle('Historique **ticket**')
+                .setTimestamp()
+                .setDescription(`Ticket de <@${interaction.user.id}> à été correctement créé`)
+
+            client.channels.cache.get(logs).send({embeds: [Create]})
+            await interaction.reply({content: `Votre ticket a correctement été créé : ${channel}`, ephemeral: true})
+
+            let Embed = new Discord.EmbedBuilder()
+                .setColor(color)
+                .setTitle('Ticket')
+                .setDescription('Voici votre ticket')
+                .setThumbnail(client.user.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
+
+            const btn = new Discord.ActionRowBuilder().addComponents(new Discord.ButtonBuilder()
+                .setCustomId("close")
+                .setLabel("Fermé le ticket")
+                .setStyle(Discord.ButtonStyle.Danger)
+                .setEmoji("🗑️"))
+
+            await channel.send({embeds: [Embed], components: [btn]})            
+        }
+        if(interaction.customId === "close") {
+
+            let user = client.users.cache.get(interaction.channel.topic)
+            try{await user.send("Votre ticket a été fermé")} catch (err) {}
+
+            const Close = new Discord.EmbedBuilder()
+                .setColor(color)
+                .setThumbnail(client.user.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
+                .setTitle('Historique **ticket**')
+                .setDescription(`Ticket de <@${interaction.user.id}> à été fermé`)
+                .setTimestamp()
+            client.channels.cache.get(logs).send({embeds : [Close]})
+            await interaction.channel.delete()
+        }
     }
 }
