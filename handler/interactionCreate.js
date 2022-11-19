@@ -43,18 +43,21 @@ module.exports = async(client, interaction) => {
             let channel = await interaction.guild.channels.create({
                 name: `🎫・ticket-${interaction.user.username}`,
                 type: Discord.ChannelType.GuildText,
-                permissionOverwrites: [
-                    {
-                        id: interaction.guild.roles.everyone.id,
-                        deny: [Discord.PermissionFlagsBits.ViewChannel]
-                    },
-                    {
-                        id: interaction.user.id,
-                        allow: [Discord.PermissionFlagsBits.ViewChannel, Discord.PermissionFlagsBits.SendMessages, Discord.PermissionFlagsBits.ReadMessageHistory, Discord.PermissionFlagsBits.AttachFiles, Discord.PermissionFlagsBits.EmbedLinks]
-                    }
-                ]
             })
             await channel.setParent(interaction.channel.parent.id)
+
+            await channel.permissionOverwrites.create(interaction.guild.roles.everyone, {
+                ViewChannel: false
+            })
+
+            await channel.permissionOverwrites.create(interaction.user, {
+                ViewChannel: true,
+                EmbedLinks: true,
+                SendMessages: true,
+                AttachFiles: true,
+                ReadMessageHistory: true,
+            })
+
             await channel.setTopic(interaction.user.id)
 
             const Create = new Discord.EmbedBuilder()
