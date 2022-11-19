@@ -3,7 +3,7 @@ const { color, logs } = require('./../config.json');
 module.exports = {
     name: "ban",
     description: "Banissement d'un membre",
-    permissions: [PermissionsBitField.Flags.banMember],
+    permissions: [PermissionsBitField.Flags.BanMembers],
     options: [
         {
             name: "membre",
