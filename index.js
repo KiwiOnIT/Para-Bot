@@ -69,7 +69,8 @@ client.on("guildMemberAdd", async member => {
         .setColor(color)
         .setThumbnail(member.user.displayAvatarURL())
         .setTimestamp()
-    member.guild.channels.cache.get("1012425082200670248").send({ embeds: [embedA] })
+    member.guild.channels.cache.get("1012425082200670248")
+    channel.send({ embeds: [embedA] })
     member.roles.add("1012802482386259980")
 });
 
